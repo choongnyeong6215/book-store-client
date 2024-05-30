@@ -9,6 +9,7 @@ export type ThemeName = "light" | "dark";
 export type HeadingSize = "large" | "medium" | "small";
 export type ButtonSize = "large" | "medium" | "small";
 export type ButtonSchema = "primary" | "normal";
+export type LatyoutWidth = "large" | "medium" | "small";
 
 interface ITheme {
   name: ThemeName;
@@ -33,14 +34,19 @@ interface ITheme {
   borderRadius: {
     default: string;
   };
+  layout: {
+    width: {
+      [key in LatyoutWidth]: string;
+    };
+  };
 }
 
 export const light: ITheme = {
   name: "light",
   color: {
-    primary: "brown",
+    primary: "#ff5800",
     background: "lightgrey",
-    secondary: "blue",
+    secondary: "#5F5F5F",
     third: "green",
     border: "grey",
     text: "black",
@@ -82,6 +88,13 @@ export const light: ITheme = {
   },
   borderRadius: {
     default: "4px",
+  },
+  layout: {
+    width: {
+      large: "1020px",
+      medium: "760px",
+      small: "320px",
+    },
   },
 };
 
