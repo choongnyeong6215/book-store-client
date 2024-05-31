@@ -43,6 +43,8 @@ const SignUp = () => {
             {errors.email && (
               <p className="error-text">이메일을 입력해주세요.</p>
             )}
+          </fieldset>
+          <fieldset>
             <InputText
               placeholder="비밀번호"
               inputType="password"
@@ -66,7 +68,7 @@ const SignUp = () => {
   );
 };
 
-const SignUpStyle = styled.div`
+export const SignUpStyle = styled.div`
   max-width: ${({ theme }) => theme.layout.width.small};
   margin: 80px auto;
 
@@ -80,6 +82,7 @@ const SignUpStyle = styled.div`
 
   input {
     width: 100%;
+    /* margin: 0.5rem 0; */
   }
 
   Button {
