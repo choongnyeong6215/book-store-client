@@ -17,5 +17,5 @@ export interface IBook {
 
 export interface IBookDetail extends IBook {
   liked: boolean;
-  categoryName: string;
+  category_name: string;
 }
