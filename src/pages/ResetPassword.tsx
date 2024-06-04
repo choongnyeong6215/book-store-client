@@ -14,7 +14,7 @@ export interface IResetPasswordProps {
 }
 
 const ResetPassword = () => {
-  const showAlert = useAlert();
+  const { showAlert } = useAlert();
   const navigate = useNavigate();
   const [resetRequested, setResetRequested] = useState(false);
 

@@ -12,7 +12,7 @@ export const useBook = (bookId: string | undefined) => {
   const likeToggle = () => {
     // 권한 체크
     const { isLoggedIn } = useAuthStore();
-    const showAlert = useAlert();
+    const { showAlert } = useAlert();
 
     if (!isLoggedIn) {
       showAlert("로그인이 필요합니다.");

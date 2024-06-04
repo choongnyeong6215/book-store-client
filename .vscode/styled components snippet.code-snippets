@@ -1,0 +1,17 @@
+{
+  "Create React Component with Styled Components": {
+    "prefix": "rsc", // 스니펫을 호출할 때 사용할 키워드
+    "body": [
+      "import styled from 'styled-components';",
+      "",
+      "const ${TM_FILENAME_BASE} = () => {",
+      "  return <${TM_FILENAME_BASE}Style>${TM_FILENAME_BASE}</${TM_FILENAME_BASE}Style>;",
+      "};",
+      "",
+      "const ${TM_FILENAME_BASE}Style = styled.div``;",
+      "",
+      "export default ${TM_FILENAME_BASE};"
+    ],
+    "description": "Create a React component with styled-components"
+  }
+}

@@ -14,7 +14,7 @@ export interface ISignUpProps {
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const showAlert = useAlert();
+  const { showAlert } = useAlert();
 
   const {
     register,
