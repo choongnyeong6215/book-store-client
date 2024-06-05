@@ -96,7 +96,7 @@ const Carts = () => {
                 totalPrice={totalPrice}
               />
               <Button size="large" schema="primary" onClick={handleOrder}>
-                주문 하기
+                주문하기
               </Button>
             </div>
           </>
@@ -113,7 +113,7 @@ const Carts = () => {
   );
 };
 
-const CartsStyle = styled.div`
+export const CartsStyle = styled.div`
   display: flex;
   gap: 24px;
   justify-content: space-between;
@@ -130,6 +130,45 @@ const CartsStyle = styled.div`
     display: flex;
     flex-direction: column;
     gap: 24px;
+  }
+
+  .order-info {
+    h1 {
+      padding: 0 0 24px 0;
+    }
+
+    border: 1px solid ${({ theme }) => theme.color.border};
+    border-radius: ${({ theme }) => theme.borderRadius.default};
+    padding: 12px;
+  }
+
+  .delivery {
+    fieldset {
+      border: 0;
+      margin: 0;
+      padding: 0 0 12px 0;
+      display: flex;
+      justify-content: start;
+      gap: 8px;
+
+      label {
+        width: 80px;
+      }
+
+      .input {
+        flex: 1;
+        input {
+          width: 100%;
+        }
+      }
+    }
+
+    .error-text {
+      color: red;
+      margin: 0;
+      padding: 0 0 12px 0;
+      text-align: right;
+    }
   }
 `;
 
