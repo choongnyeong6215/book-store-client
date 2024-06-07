@@ -11,89 +11,67 @@ import BookDetail from "./pages/BookDetail";
 import Carts from "./pages/Carts";
 import Order from "./pages/Order";
 import OrderList from "./pages/OrderList";
+import { QueryClientProvider } from "react-query";
+import { queryClient } from "./api/queryClient";
 
-const router = createBrowserRouter([
+const routeList = [
   {
     path: "/",
-    element: (
-      <Layout>
-        <Home />
-      </Layout>
-    ),
+    element: <Home />,
     errorElement: <Error />,
   },
   {
     path: "/books",
-    element: (
-      <Layout>
-        <Books />
-      </Layout>
-    ),
+    element: <Books />,
   },
   {
     path: "/join",
-    element: (
-      <Layout>
-        <SignUp />
-      </Layout>
-    ),
+    element: <SignUp />,
   },
   {
     path: "/login",
-    element: (
-      <Layout>
-        <Login />
-      </Layout>
-    ),
+    element: <Login />,
   },
   {
     path: "/reset",
-    element: (
-      <Layout>
-        <ResetPassword />
-      </Layout>
-    ),
+    element: <ResetPassword />,
   },
   {
     path: "/books/:bookId",
-    element: (
-      <Layout>
-        <BookDetail />
-      </Layout>
-    ),
+    element: <BookDetail />,
   },
   {
     path: "/carts",
-    element: (
-      <Layout>
-        <Carts />
-      </Layout>
-    ),
+    element: <Carts />,
   },
   {
     path: "/orders",
-    element: (
-      <Layout>
-        <Order />
-      </Layout>
-    ),
+    element: <Order />,
   },
   {
     path: "/orderlist",
-    element: (
-      <Layout>
-        <OrderList />
-      </Layout>
-    ),
+    element: <OrderList />,
   },
-]);
+];
+
+const router = createBrowserRouter(
+  routeList.map((item) => {
+    return {
+      ...item,
+      element: <Layout>{item.element}</Layout>,
+      errorElement: <Error />,
+    };
+  })
+);
 
 const App = () => {
   return (
     <>
-      <BookStoreThemeProvider>
-        <RouterProvider router={router} />
-      </BookStoreThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <BookStoreThemeProvider>
+          <RouterProvider router={router} />
+        </BookStoreThemeProvider>
+      </QueryClientProvider>
     </>
   );
 };

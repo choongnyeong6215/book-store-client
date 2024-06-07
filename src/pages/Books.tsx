@@ -6,9 +6,19 @@ import BooksEmpty from "../components/books/BooksEmpty";
 import Pagination from "../components/books/Pagination";
 import BooksViewSwitcher from "../components/books/BooksViewSwitcher";
 import { useBooks } from "../hooks/useBooks";
+import Loading from "@/components/common/Loading";
 
 const Books = () => {
-  const { books, pagination, isEmpty } = useBooks();
+  const { books, pagination, isEmpty, isBooksLoading } = useBooks();
+
+  if (isEmpty) {
+    return <BooksEmpty />;
+  }
+
+  if (!books || !pagination || isBooksLoading) {
+    return <Loading />;
+    // return null;
+  }
 
   return (
     <>
@@ -18,9 +28,8 @@ const Books = () => {
           <BooksFilter />
           <BooksViewSwitcher />
         </div>
-        {!isEmpty && <BooksList books={books} />}
-        {isEmpty && <BooksEmpty />}
-        {!isEmpty && <Pagination pagination={pagination} />}
+        <BooksList books={books} />
+        <Pagination pagination={pagination} />
       </BooksStyle>
     </>
   );
@@ -32,11 +41,18 @@ const BooksStyle = styled.div`
   justify-content: space-between;
   gap: 24px;
 
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
   .filter {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 0;
+    animation: rotate 1s linear infinite;
   }
 `;
 

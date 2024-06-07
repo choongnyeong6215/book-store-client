@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { IBook } from "../../models/book.model";
-import { getImgSrc } from "../../utils/image";
-import { formatNumber } from "../../utils/format";
+import { IBook } from "@/models/book.model";
+import { getImgSrc } from "@/utils/image";
+import { formatNumber } from "@/utils/format";
 import { FaHeart } from "react-icons/fa";
-import { TViewMode } from "./BooksViewSwitcher";
+import { TViewMode } from "@/components/books/BooksViewSwitcher";
 import { Link } from "react-router-dom";
 
 interface IBookItemProps {

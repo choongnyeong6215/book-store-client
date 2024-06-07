@@ -1,12 +1,10 @@
 import Title from "../components/common/Title";
 import InputText from "../components/common/InputText";
 import Button from "../components/common/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { ISignUpProps, SignUpStyle } from "./SignUp";
-import { useState } from "react";
-import { resetPassword, resetRequest } from "../api/auth.api";
-import { useAlert } from "../hooks/useAlert";
+import { useAuth } from "@/hooks/useAuth";
 
 export interface IResetPasswordProps {
   email: string;
@@ -14,10 +12,7 @@ export interface IResetPasswordProps {
 }
 
 const ResetPassword = () => {
-  const { showAlert } = useAlert();
-  const navigate = useNavigate();
-  const [resetRequested, setResetRequested] = useState(false);
-
+  const { userResetPassword, userResetRequest, resetRequested } = useAuth();
   const {
     register,
     handleSubmit,
@@ -26,17 +21,12 @@ const ResetPassword = () => {
 
   const onSubmit = (data: ISignUpProps) => {
     if (resetRequested) {
-      // 초기화
-      resetPassword(data).then(() => {
-        showAlert("비밀번호가 초기화 되었습니다.");
-        navigate("/login");
-      });
+      userResetPassword(data);
     } else {
-      // 초기화 요청
-      resetRequest(data).then(() => {
-        setResetRequested(true);
-      });
+      userResetRequest(data);
     }
+
+    resetRequested ? userResetPassword(data) : userResetRequest(data);
   };
 
   return (

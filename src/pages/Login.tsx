@@ -3,10 +3,8 @@ import InputText from "../components/common/InputText";
 import Button from "../components/common/Button";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { login } from "../api/auth.api";
-import { useAlert } from "../hooks/useAlert";
 import { SignUpStyle } from "./SignUp";
-import { useAuthStore } from "../store/authStore";
+import { useAuth } from "@/hooks/useAuth";
 
 export interface ISignUpProps {
   email: string;
@@ -14,10 +12,7 @@ export interface ISignUpProps {
 }
 
 const Login = () => {
-  const navigate = useNavigate();
-  const { showAlert } = useAlert();
-
-  const { isLoggedIn, storeLogin, storeLogout } = useAuthStore();
+  const { userLogin } = useAuth();
 
   const {
     register,
@@ -26,19 +21,7 @@ const Login = () => {
   } = useForm<ISignUpProps>();
 
   const onSubmit = (data: ISignUpProps) => {
-    login(data).then(
-      (res) => {
-        // 로그인 상태로 변경
-        storeLogin(res.token);
-
-        showAlert("로그인 완료되었습니다.");
-        navigate("/");
-      },
-      // 로그인 실패 처리
-      (error) => {
-        showAlert("로그인에 실패했습니다.");
-      }
-    );
+    userLogin(data);
   };
 
   return (

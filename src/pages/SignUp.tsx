@@ -2,10 +2,9 @@ import styled from "styled-components";
 import Title from "../components/common/Title";
 import InputText from "../components/common/InputText";
 import Button from "../components/common/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { signUp } from "../api/auth.api";
-import { useAlert } from "../hooks/useAlert";
+import { useAuth } from "@/hooks/useAuth";
 
 export interface ISignUpProps {
   email: string;
@@ -13,9 +12,7 @@ export interface ISignUpProps {
 }
 
 const SignUp = () => {
-  const navigate = useNavigate();
-  const { showAlert } = useAlert();
-
+  const { userSignUp } = useAuth();
   const {
     register,
     handleSubmit,
@@ -23,10 +20,7 @@ const SignUp = () => {
   } = useForm<ISignUpProps>();
 
   const onSubmit = (data: ISignUpProps) => {
-    signUp(data).then((res) => {
-      showAlert("회원가입이 완료되었습니다.");
-      navigate("/login");
-    });
+    userSignUp(data);
   };
 
   return (
