@@ -9,6 +9,7 @@ import { useAuthStore } from "../store/authStore";
 import { useAlert } from "./useAlert";
 import { addCart } from "../api/carts.api";
 import { addBookReview, fetchBookReview } from "@/api/review.api";
+import { useToast } from "./useToast";
 
 export const useBook = (bookId: string | undefined) => {
   const { showAlert } = useAlert();
@@ -20,6 +21,8 @@ export const useBook = (bookId: string | undefined) => {
     // 권한 체크
     const { isLoggedIn } = useAuthStore();
     const { showAlert } = useAlert();
+
+    const { showToast } = useToast();
 
     if (!isLoggedIn) {
       showAlert("로그인이 필요합니다.");
@@ -35,6 +38,7 @@ export const useBook = (bookId: string | undefined) => {
           liked: false,
           likes: book.likes - 1,
         });
+        showToast("좋아요가 취소되었습니다.");
       });
     } else {
       likeBook(book.id).then(() => {
@@ -43,6 +47,7 @@ export const useBook = (bookId: string | undefined) => {
           liked: true,
           likes: book.likes + 1,
         });
+        showToast("좋아요 성공했습니다.");
       });
     }
   };
