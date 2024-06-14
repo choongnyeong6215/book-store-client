@@ -49,3 +49,9 @@ export const unlikeBook = async (bookId: number) => {
 
   return response.data;
 };
+
+export const fetchBestBooks = async () => {
+  const response = await httpClient.get<IBook[]>(`/books/best`);
+
+  return response.data;
+};

@@ -33,7 +33,7 @@ const BookItem = ({ book, view }: IBookItemProps) => {
   );
 };
 
-const BookItemStyle = styled.div<Pick<IBookItemProps, "view">>`
+export const BookItemStyle = styled.div<Pick<IBookItemProps, "view">>`
   a {
     display: flex;
     flex-direction: ${({ view }) => (view === "grid" ? "column" : "row")};

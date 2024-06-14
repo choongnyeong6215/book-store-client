@@ -2,17 +2,17 @@ export interface IBook {
   id: number;
   title: string;
   img: number;
-  category_id: number;
+  categoryId: number;
   form: string;
-  isbn: string;
+  isbn: number;
   summary: string;
   detail: string;
   author: string;
   pages: number;
   contents: string;
   price: number;
-  likes: number;
   pubDate: string;
+  likes: number;
 }
 
 export interface IBookDetail extends IBook {

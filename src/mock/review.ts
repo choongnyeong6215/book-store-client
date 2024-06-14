@@ -35,3 +35,9 @@ export const addReview = http.post(
     );
   }
 );
+
+export const revivewForMain = http.get("http://localhost:9999/reviews", () => {
+  return HttpResponse.json(mockReviewData, {
+    status: 200,
+  });
+});
