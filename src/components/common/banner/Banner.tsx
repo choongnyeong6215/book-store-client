@@ -104,6 +104,20 @@ const BannerButtonStyle = styled.div`
       right: 10px;
     }
   }
+
+  @media screen AND (${({ theme }) => theme.mediaQuery.mobile}) {
+    width: 28px;
+    height: 28px;
+    font-size: 1.5rem;
+
+    &.prev {
+      left: 0;
+    }
+
+    &.next {
+      right: 0;
+    }
+  }
 `;
 
 const BannerIndicatorStyle = styled.div`
@@ -123,6 +137,18 @@ const BannerIndicatorStyle = styled.div`
 
     &.active {
       background-color: ${({ theme }) => theme.color.primary};
+    }
+  }
+
+  @media screen AND (${({ theme }) => theme.mediaQuery.mobile}) {
+    bottom: 0;
+    span {
+      width: 12px;
+      height: 12px;
+
+      &.actibe {
+        width: 24px;
+      }
     }
   }
 `;

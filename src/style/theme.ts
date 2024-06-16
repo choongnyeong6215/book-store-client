@@ -10,6 +10,7 @@ export type HeadingSize = "large" | "medium" | "small";
 export type ButtonSize = "large" | "medium" | "small";
 export type ButtonSchema = "primary" | "normal" | "like";
 export type LatyoutWidth = "large" | "medium" | "small";
+export type TMediaQuery = "mobile" | "tablet" | "desktop";
 
 interface ITheme {
   name: ThemeName;
@@ -38,6 +39,9 @@ interface ITheme {
     width: {
       [key in LatyoutWidth]: string;
     };
+  };
+  mediaQuery: {
+    [key in TMediaQuery]: string;
   };
 }
 
@@ -99,6 +103,11 @@ export const light: ITheme = {
       medium: "760px",
       small: "320px",
     },
+  },
+  mediaQuery: {
+    mobile: "(max-width: 768px)",
+    tablet: "(max-width: 1024px)",
+    desktop: "(min-width: 1025px)",
   },
 };
 
